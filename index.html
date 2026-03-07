@@ -253,13 +253,14 @@
                     <!-- ВИГЛЯД 1.5: АМБАСАДОР (ВІДЖЕТ МОЇ БОНУСИ)  -->
                     <!-- ========================================== -->
                     <main id="view-ambassador-dashboard" class="max-w-7xl mx-auto px-4 @sm:px-6 @lg:px-8 py-8 @md:py-12 hidden">
-                        <div class="grid grid-cols-1 @md:grid-cols-2 gap-8">
+                        <div class="max-w-3xl mx-auto">
+                            <h1 class="text-2xl @md:text-3xl font-bold mb-6 @md:mb-8">Мої бонуси</h1>
                             
-                            <!-- Віджет Мої бонуси з відкритою історією -->
-                            <div class="bg-white rounded-[24px] p-6 @md:p-8 shadow-sm border border-gray-50 flex flex-col max-h-[700px]">
+                            <!-- Блок Мої бонуси з відкритою історією -->
+                            <div class="bg-white rounded-[24px] p-6 @md:p-8 shadow-sm border border-gray-50 flex flex-col">
                                 <div class="flex justify-between items-center mb-6">
-                                    <h2 class="text-2xl font-bold">Мої бонуси</h2>
-                                    <span class="text-2xl font-bold">220 ₴</span>
+                                    <h2 class="text-xl font-bold">Баланс</h2>
+                                    <span class="text-3xl font-bold text-black">220 ₴</span>
                                 </div>
                                 
                                 <!-- Інфо -->
@@ -268,7 +269,7 @@
                                 </div>
 
                                 <!-- Блоки статистики -->
-                                <div class="space-y-2 mb-6">
+                                <div class="space-y-2 mb-8">
                                     <div class="bg-[#f7f8f9] rounded-xl px-4 py-3.5 flex justify-between items-center">
                                         <span class="text-[14px] text-gray-800">За доставку</span>
                                         <span class="font-medium text-[14px]">20 ₴</span>
@@ -286,7 +287,7 @@
                                 <h3 class="font-bold text-lg mb-4">Історія транзакцій</h3>
 
                                 <!-- Список транзакцій -->
-                                <div class="space-y-5 overflow-y-auto custom-scroll pr-2 flex-1">
+                                <div class="space-y-5">
                                     <!-- Рядок історії (Рефералка) -->
                                     <div class="flex justify-between items-start">
                                         <div>
@@ -313,12 +314,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Симуляція інших віджетів -->
-                            <div class="bg-npgray/50 rounded-[24px] border border-dashed border-gray-200 flex items-center justify-center p-8 min-h-[300px]">
-                                <p class="text-gray-400 text-sm">Інші віджети кабінету (Мої відправлення тощо)</p>
-                            </div>
-
                         </div>
                     </main>
 
@@ -326,46 +321,58 @@
                     <!-- ВИГЛЯД 2: РЕФЕРАЛ                          -->
                     <!-- ========================================== -->
                     <main id="view-referral" class="max-w-7xl mx-auto px-4 @sm:px-6 @lg:px-8 py-8 @md:py-12 hidden">
-                        <h1 class="text-2xl @md:text-3xl font-bold mb-6 @md:mb-8">Мої бонуси</h1>
+                        <div class="max-w-3xl mx-auto">
+                            <h1 class="text-2xl @md:text-3xl font-bold mb-6 @md:mb-8">Мої бонуси</h1>
 
-                        <!-- Банер Countdown -->
-                        <div class="bg-amber-50 border border-amber-100 rounded-3xl p-4 @md:p-5 mb-6 @md:mb-8 flex items-start @sm:items-center gap-4 shadow-sm animate-fade-in max-w-3xl">
-                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-lg flex-shrink-0 mt-1 @sm:mt-0">⏳</div>
-                            <div>
-                                <h3 class="font-medium text-amber-900 text-base @md:text-lg">Твій бонус 100 грн згорить через <span class="font-bold">87 днів</span>.</h3>
-                                <p class="text-xs @md:text-sm text-amber-700 mt-0.5">Використай його для оплати доставки прямо зараз!</p>
+                            <!-- Банер Countdown -->
+                            <div class="bg-amber-50 border border-amber-100 rounded-3xl p-4 @md:p-5 mb-6 @md:mb-8 flex items-start @sm:items-center gap-4 shadow-sm animate-fade-in">
+                                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-lg flex-shrink-0 mt-1 @sm:mt-0">⏳</div>
+                                <div>
+                                    <h3 class="font-medium text-amber-900 text-base @md:text-lg">Твій бонус 100 грн згорить через <span class="font-bold">87 днів</span>.</h3>
+                                    <p class="text-xs @md:text-sm text-amber-700 mt-0.5">Використай його для оплати доставки прямо зараз!</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="max-w-3xl">
-                            <!-- Блок Мої бонуси -->
-                            <div class="bg-white rounded-3xl p-5 @md:p-8 shadow-sm">
-                                <div class="flex justify-between items-center mb-6 border-b border-gray-100 pb-5 @md:pb-6">
-                                    <h3 class="text-xl @md:text-2xl font-bold">Баланс</h3>
-                                    <span class="text-2xl @md:text-3xl font-bold text-black" id="referral-balance">100 ₴</span>
+                            <!-- Блок Мої бонуси (ІДЕНТИЧНИЙ ДО АМБАСАДОРА) -->
+                            <div class="bg-white rounded-[24px] p-6 @md:p-8 shadow-sm border border-gray-50 flex flex-col">
+                                <div class="flex justify-between items-center mb-6">
+                                    <h2 class="text-xl font-bold">Баланс</h2>
+                                    <span class="text-3xl font-bold text-black">100 ₴</span>
                                 </div>
                                 
-                                <h4 class="font-medium mb-4 text-gray-700">Історія нарахувань</h4>
-                                
-                                <div class="space-y-4">
-                                    <!-- Запис про вітальний бонус -->
-                                    <div class="bg-green-50 rounded-2xl p-4 flex flex-col gap-2">
-                                        <div class="flex justify-between items-start gap-4">
-                                            <span class="font-medium text-gray-900 leading-snug">Вітальний бонус від Анастасії</span>
-                                            <span class="font-bold text-green-600 whitespace-nowrap">+ 100 ₴</span>
-                                        </div>
-                                        <div class="flex items-start gap-2 text-xs text-green-700 font-medium">
-                                            <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                            <span>Готовий до використання. Сплатіть ним за доставку!</span>
-                                        </div>
+                                <!-- Інфо -->
+                                <div class="text-sm text-gray-600 leading-relaxed mb-6">
+                                    <p>Бонуси нараховуються за отримані посилки (5 грн / 0.5кг) та <a href="#" onclick="switchRole('ambassador')" class="text-npred hover:underline">запрошених друзів (100 грн)</a>.</p>
+                                </div>
+
+                                <!-- Блоки статистики -->
+                                <div class="space-y-2 mb-8">
+                                    <div class="bg-[#f7f8f9] rounded-xl px-4 py-3.5 flex justify-between items-center">
+                                        <span class="text-[14px] text-gray-800">За доставку</span>
+                                        <span class="font-medium text-[14px]">0 ₴</span>
+                                    </div>
+                                    <div class="bg-[#f7f8f9] rounded-xl px-4 py-3.5 flex justify-between items-center">
+                                        <span class="text-[14px] text-gray-800">За запрошених друзів</span>
+                                        <span class="font-medium text-[14px]">100 ₴</span>
+                                    </div>
+                                    <div class="bg-[#f7f8f9] rounded-xl px-4 py-3.5 flex justify-between items-center">
+                                        <span class="text-[14px] text-gray-800">Зекономлено на доставці</span>
+                                        <span class="font-medium text-[14px]">0 ₴</span>
                                     </div>
                                 </div>
 
-                                <div class="mt-8">
-                                    <p class="text-xs @md:text-sm text-gray-500 mb-4">Бонуси автоматично застосовуються для сплати послуг за доставку Нової Пошти Глобал.</p>
-                                    <button class="w-full border border-gray-300 hover:border-black text-black bg-transparent rounded-full py-3 px-6 font-medium text-sm transition-colors">
-                                        Історія бонусів
-                                    </button>
+                                <h3 class="font-bold text-lg mb-4">Історія транзакцій</h3>
+
+                                <!-- Список транзакцій -->
+                                <div class="space-y-5">
+                                    <!-- Рядок історії (Вітальний бонус) -->
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <div class="text-[14px] text-gray-900 font-medium mb-1">05.03.2026</div>
+                                            <div class="text-[13px] text-gray-500">Вітальний бонус (запрошення від Анастасії)</div>
+                                        </div>
+                                        <div class="text-green-600 bg-green-50 px-2.5 py-1 rounded-lg text-sm font-bold whitespace-nowrap">+ 100 ₴</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
