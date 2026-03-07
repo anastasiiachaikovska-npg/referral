@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Реферальна програма - Shopping</title>
-    <!-- Пдключаємо Tailwind з плагіном container-queries для правильної імітації мобайлу -->
+    <!-- Підключаємо Tailwind з плагіном container-queries для правильної імітації мобайлу -->
     <script src="https://cdn.tailwindcss.com?plugins=container-queries"></script>
     <script>
         tailwind.config = {
             theme: {
-                // Синхронізуємо брейкпоінти контейнера зі стандартними розмірами екранів
                 containers: {
                     sm: '640px',
                     md: '768px',
@@ -43,7 +42,6 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Блокуємо скрол на body, скролиться лише внутрішній контент додатку */
         body { font-family: 'Inter', sans-serif; background-color: #e5e7eb; margin: 0; overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
         .custom-scroll::-webkit-scrollbar { width: 6px; }
         .custom-scroll::-webkit-scrollbar-track { background: transparent; }
@@ -68,13 +66,8 @@
     <!-- ГОЛОВНА ОБЛАСТЬ: ТУТ РОЗТАШОВАНИЙ ДОДАТОК -->
     <div class="flex-1 w-full flex items-center justify-center p-0 sm:p-4 md:p-8 overflow-hidden bg-gray-100">
         
-        <!-- WRAPPER ПРИСТРОЮ (Він змінює розміри та імітує телефон або десктоп) -->
         <div id="device-wrapper" class="@container w-full h-full mx-auto relative transition-all duration-500 rounded-none border-0 shadow-none flex-shrink-0 bg-[#fafafa]">
-            
-            <!-- ВНУТРІШНІЙ VIEWPORT (Обрізає краї та дозволяє скрол) -->
             <div class="w-full h-full relative overflow-hidden rounded-[inherit] bg-[#fafafa]">
-                
-                <!-- СКРОЛ-ЗОНА ДОДАТКУ -->
                 <div class="w-full h-full overflow-y-auto custom-scroll">
                     
                     <!-- Шапка додатку -->
@@ -86,7 +79,6 @@
                                     <path d="M2 17L12 22L22 17" stroke="#cf3033" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path d="M2 12L12 17L22 12" stroke="#cf3033" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
-                                <!-- На мобільному ховаємо слово, лишаємо лого -->
                                 <span class="text-npred hidden @sm:block">Shopping</span>
                             </a>
                             <nav class="hidden @md:flex gap-6 text-sm font-medium text-gray-700">
@@ -110,7 +102,7 @@
                                     <a href="#" class="block px-4 py-3 text-sm hover:bg-gray-50 transition-colors">Мої адреси для шопінгу</a>
                                     <a href="#" class="flex justify-between items-center px-4 py-3 text-sm hover:bg-gray-50 transition-colors">
                                         <span>Мої бонуси</span>
-                                        <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full" id="dropdown-balance">100 ₴</span>
+                                        <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full" id="dropdown-balance">220 ₴</span>
                                     </a>
                                     <a href="#" class="block px-4 py-3 text-sm bg-gray-50 font-medium text-npred">Реферальна програма</a>
                                     <a href="#" class="block px-4 py-3 text-sm hover:bg-gray-50 transition-colors">Зворотний зв'язок</a>
@@ -123,7 +115,7 @@
                     </header>
 
                     <!-- ========================================== -->
-                    <!-- ВИГЛЯД 1: АМБАСАДОР                        -->
+                    <!-- ВИГЛЯД 1: АМБАСАДОР (СТОРІНКА РЕФЕРАЛКИ)   -->
                     <!-- ========================================== -->
                     <main id="view-ambassador" class="max-w-7xl mx-auto px-4 @sm:px-6 @lg:px-8 py-8 @md:py-12">
                         <h1 class="text-2xl @md:text-3xl font-bold mb-6 @md:mb-8">Реферальна програма</h1>
@@ -258,6 +250,79 @@
                     </main>
 
                     <!-- ========================================== -->
+                    <!-- ВИГЛЯД 1.5: АМБАСАДОР (ВІДЖЕТ МОЇ БОНУСИ)  -->
+                    <!-- ========================================== -->
+                    <main id="view-ambassador-dashboard" class="max-w-7xl mx-auto px-4 @sm:px-6 @lg:px-8 py-8 @md:py-12 hidden">
+                        <div class="grid grid-cols-1 @md:grid-cols-2 gap-8">
+                            
+                            <!-- Віджет Мої бонуси з відкритою історією -->
+                            <div class="bg-white rounded-[24px] p-6 @md:p-8 shadow-sm border border-gray-50 flex flex-col max-h-[700px]">
+                                <div class="flex justify-between items-center mb-6">
+                                    <h2 class="text-2xl font-bold">Мої бонуси</h2>
+                                    <span class="text-2xl font-bold">220 ₴</span>
+                                </div>
+                                
+                                <!-- Інфо -->
+                                <div class="text-sm text-gray-600 leading-relaxed mb-6">
+                                    <p>Бонуси нараховуються за отримані посилки (5 грн / 0.5кг) та <a href="#" onclick="switchRole('ambassador')" class="text-npred hover:underline">запрошених друзів (100 грн)</a>.</p>
+                                </div>
+
+                                <!-- Блоки статистики -->
+                                <div class="space-y-2 mb-6">
+                                    <div class="bg-[#f7f8f9] rounded-xl px-4 py-3.5 flex justify-between items-center">
+                                        <span class="text-[14px] text-gray-800">За доставку</span>
+                                        <span class="font-medium text-[14px]">20 ₴</span>
+                                    </div>
+                                    <div class="bg-[#f7f8f9] rounded-xl px-4 py-3.5 flex justify-between items-center">
+                                        <span class="text-[14px] text-gray-800">За запрошених друзів</span>
+                                        <span class="font-medium text-[14px]">200 ₴</span>
+                                    </div>
+                                    <div class="bg-[#f7f8f9] rounded-xl px-4 py-3.5 flex justify-between items-center">
+                                        <span class="text-[14px] text-gray-800">Зекономлено на доставці</span>
+                                        <span class="font-medium text-[14px]">0 ₴</span>
+                                    </div>
+                                </div>
+
+                                <h3 class="font-bold text-lg mb-4">Історія транзакцій</h3>
+
+                                <!-- Список транзакцій -->
+                                <div class="space-y-5 overflow-y-auto custom-scroll pr-2 flex-1">
+                                    <!-- Рядок історії (Рефералка) -->
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <div class="text-[14px] text-gray-900 font-medium mb-1">05.03.2026</div>
+                                            <div class="text-[13px] text-gray-500">Запрошення (ol***@gmail.com)</div>
+                                        </div>
+                                        <div class="text-green-600 bg-green-50 px-2.5 py-1 rounded-lg text-sm font-bold whitespace-nowrap">+ 100 ₴</div>
+                                    </div>
+                                    <!-- Рядок історії (Рефералка) -->
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <div class="text-[14px] text-gray-900 font-medium mb-1">01.03.2026</div>
+                                            <div class="text-[13px] text-gray-500">Запрошення (an***@gmail.com)</div>
+                                        </div>
+                                        <div class="text-green-600 bg-green-50 px-2.5 py-1 rounded-lg text-sm font-bold whitespace-nowrap">+ 100 ₴</div>
+                                    </div>
+                                    <!-- Рядок історії (Старий бонус за замовлення) -->
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <div class="text-[14px] text-gray-900 font-medium mb-1">28.02.2026</div>
+                                            <div class="text-[13px] text-gray-500">Замовлення NP001679661</div>
+                                        </div>
+                                        <div class="text-green-600 bg-green-50 px-2.5 py-1 rounded-lg text-sm font-bold whitespace-nowrap">+ 20 ₴</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Симуляція інших віджетів -->
+                            <div class="bg-npgray/50 rounded-[24px] border border-dashed border-gray-200 flex items-center justify-center p-8 min-h-[300px]">
+                                <p class="text-gray-400 text-sm">Інші віджети кабінету (Мої відправлення тощо)</p>
+                            </div>
+
+                        </div>
+                    </main>
+
+                    <!-- ========================================== -->
                     <!-- ВИГЛЯД 2: РЕФЕРАЛ                          -->
                     <!-- ========================================== -->
                     <main id="view-referral" class="max-w-7xl mx-auto px-4 @sm:px-6 @lg:px-8 py-8 @md:py-12 hidden">
@@ -310,40 +375,103 @@
 
                 <!-- МОДАЛЬНІ ВІКНА ТА ТОСТИ (Абсолютно позиціоновані всередині Viewport) -->
                 
-                <!-- Модалка -->
+                <!-- Модалка: Всі реферали -->
                 <div id="modal-all-referrals" class="absolute inset-0 bg-black/40 z-50 hidden flex items-center justify-center p-4 opacity-0 transition-opacity">
-                    <div class="bg-white rounded-3xl w-full max-w-lg shadow-xl overflow-hidden transform scale-95 transition-transform duration-200" id="modal-content">
+                    <div class="bg-white rounded-3xl w-full max-w-4xl shadow-xl overflow-hidden transform scale-95 transition-transform duration-200" id="modal-content-referrals">
                         <div class="px-5 py-4 border-b border-gray-100 flex justify-between items-center bg-white relative z-10">
-                            <h3 class="text-lg font-bold">Всі запрошені друзі</h3>
-                            <button onclick="closeModal()" class="text-gray-400 hover:text-black transition-colors p-1 bg-gray-50 rounded-full">
+                            <h3 class="text-lg font-bold">Всі запрошені друзі (5)</h3>
+                            <button onclick="closeModal('modal-all-referrals', 'modal-content-referrals')" class="text-gray-400 hover:text-black transition-colors p-1 bg-gray-50 rounded-full">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                             </button>
                         </div>
-                        <div class="p-5 overflow-y-auto max-h-[50vh] custom-scroll">
-                            <table class="w-full text-left text-sm whitespace-nowrap">
-                                <tbody class="text-gray-800 divide-y divide-gray-50">
-                                    <tr class="hover:bg-gray-50 transition-colors">
-                                        <td class="py-3 font-medium">an***@gmail.com</td>
-                                        <td class="py-3 text-right text-green-600 font-bold">Нараховано</td>
-                                    </tr>
-                                    <tr class="hover:bg-gray-50 transition-colors">
-                                        <td class="py-3 font-medium">ma***@ukr.net</td>
-                                        <td class="py-3 text-right text-orange-500 font-medium">В процесі</td>
-                                    </tr>
-                                    <tr class="hover:bg-gray-50 transition-colors">
-                                        <td class="py-3 font-medium">ol***@gmail.com</td>
-                                        <td class="py-3 text-right text-green-600 font-bold">Нараховано</td>
-                                    </tr>
-                                    <tr class="hover:bg-gray-50 transition-colors">
-                                        <td class="py-3 font-medium">ig***@yahoo.com</td>
-                                        <td class="py-3 text-right text-orange-500 font-medium">В процесі</td>
-                                    </tr>
-                                    <tr class="hover:bg-gray-50 transition-colors">
-                                        <td class="py-3 font-medium">vi***@icloud.com</td>
-                                        <td class="py-3 text-right text-orange-500 font-medium">В процесі</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="p-5 overflow-y-auto max-h-[60vh] custom-scroll">
+                            <div class="overflow-x-auto custom-scroll pb-2">
+                                <table class="w-full text-left text-sm whitespace-nowrap min-w-[600px]">
+                                    <thead>
+                                        <tr class="text-gray-400 border-b border-gray-100">
+                                            <th class="pb-3 font-medium">Користувач</th>
+                                            <th class="pb-3 font-medium">Реєстрація</th>
+                                            <th class="pb-3 font-medium">Статус</th>
+                                            <th class="pb-3 font-medium text-right">Бонус</th>
+                                            <th class="pb-3 font-medium text-center">Дія</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-gray-800 align-top">
+                                        <tr class="border-b border-gray-50">
+                                            <td class="py-4 font-medium">an***@gmail.com</td>
+                                            <td class="py-4 text-gray-500">01.03.2026</td>
+                                            <td class="py-4">
+                                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-green-50 text-green-800 border border-green-100">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Нараховано
+                                                </span>
+                                                <div class="text-[11px] text-gray-500 mt-1.5">Посилка на складі</div>
+                                            </td>
+                                            <td class="py-4 text-right font-bold text-green-600">+100 ₴</td>
+                                            <td class="py-4 text-center">-</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-50">
+                                            <td class="py-4 font-medium">ma***@ukr.net</td>
+                                            <td class="py-4 text-gray-500">03.03.2026</td>
+                                            <td class="py-4">
+                                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-orange-50 text-orange-800 border border-orange-100">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> В процесі
+                                                </span>
+                                                <div class="text-[11px] text-gray-500 mt-1.5">Немає посилки</div>
+                                            </td>
+                                            <td class="py-4 text-right font-medium text-gray-400">0 ₴</td>
+                                            <td class="py-4 text-center">
+                                                <button onclick="sendReminder(this)" class="text-npred font-medium text-xs px-3 py-1.5 rounded-full border border-red-100 hover:bg-red-50 transition-all">
+                                                    Нагадати
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b border-gray-50">
+                                            <td class="py-4 font-medium">ol***@gmail.com</td>
+                                            <td class="py-4 text-gray-500">28.02.2026</td>
+                                            <td class="py-4">
+                                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-green-50 text-green-800 border border-green-100">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Нараховано
+                                                </span>
+                                                <div class="text-[11px] text-gray-500 mt-1.5">Посилка на складі</div>
+                                            </td>
+                                            <td class="py-4 text-right font-bold text-green-600">+100 ₴</td>
+                                            <td class="py-4 text-center">-</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-50">
+                                            <td class="py-4 font-medium">ig***@yahoo.com</td>
+                                            <td class="py-4 text-gray-500">04.03.2026</td>
+                                            <td class="py-4">
+                                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-orange-50 text-orange-800 border border-orange-100">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> В процесі
+                                                </span>
+                                                <div class="text-[11px] text-gray-500 mt-1.5">Немає посилки</div>
+                                            </td>
+                                            <td class="py-4 text-right font-medium text-gray-400">0 ₴</td>
+                                            <td class="py-4 text-center">
+                                                <button onclick="sendReminder(this)" class="text-npred font-medium text-xs px-3 py-1.5 rounded-full border border-red-100 hover:bg-red-50 transition-all">
+                                                    Нагадати
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr class="">
+                                            <td class="py-4 font-medium">vi***@icloud.com</td>
+                                            <td class="py-4 text-gray-500">05.03.2026</td>
+                                            <td class="py-4">
+                                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-orange-50 text-orange-800 border border-orange-100">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> В процесі
+                                                </span>
+                                                <div class="text-[11px] text-gray-500 mt-1.5">Немає посилки</div>
+                                            </td>
+                                            <td class="py-4 text-right font-medium text-gray-400">0 ₴</td>
+                                            <td class="py-4 text-center">
+                                                <button onclick="sendReminder(this)" class="text-npred font-medium text-xs px-3 py-1.5 rounded-full border border-red-100 hover:bg-red-50 transition-all">
+                                                    Нагадати
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -356,13 +484,16 @@
     </div> <!-- /Main Area -->
 
     <!-- ПАНЕЛЬ 2: ПЕРЕМИКАЧ РОЛЕЙ (Нижня) -->
-    <div class="w-full bg-white border-t border-gray-200 p-3 md:p-4 flex justify-center items-center gap-4 z-50 relative shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] flex-shrink-0">
+    <div class="w-full bg-white border-t border-gray-200 p-3 md:p-4 flex justify-center items-center gap-4 z-50 relative shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] flex-shrink-0 flex-wrap">
         <span class="text-sm font-semibold text-gray-500 uppercase tracking-wide hidden sm:block">Перегляд як:</span>
-        <div class="bg-npgray p-1 rounded-full flex gap-1">
-            <button id="btn-role-ambassador" onclick="switchRole('ambassador')" class="px-4 py-1.5 rounded-full text-sm font-medium bg-white shadow-sm text-black transition-all">
-                Амбасадор
+        <div class="bg-npgray p-1 rounded-full flex gap-1 flex-wrap justify-center">
+            <button id="btn-role-ambassador" onclick="switchRole('ambassador')" class="px-3 md:px-4 py-1.5 rounded-full text-[13px] md:text-sm font-medium bg-white shadow-sm text-black transition-all">
+                Амбасадор (Рефералка)
             </button>
-            <button id="btn-role-referral" onclick="switchRole('referral')" class="px-4 py-1.5 rounded-full text-sm font-medium text-gray-500 hover:text-black transition-all">
+            <button id="btn-role-ambassador-dash" onclick="switchRole('ambassador-dash')" class="px-3 md:px-4 py-1.5 rounded-full text-[13px] md:text-sm font-medium text-gray-500 hover:text-black transition-all">
+                Амбасадор (Кабінет/Бонуси)
+            </button>
+            <button id="btn-role-referral" onclick="switchRole('referral')" class="px-3 md:px-4 py-1.5 rounded-full text-[13px] md:text-sm font-medium text-gray-500 hover:text-black transition-all">
                 Новий клієнт
             </button>
         </div>
@@ -377,39 +508,52 @@
             const btnMobile = document.getElementById('btn-device-mobile');
 
             if (device === 'mobile') {
-                // Додаємо стилі рамки телефона
                 wrapper.className = "@container w-[390px] h-[844px] max-h-full mx-auto relative transition-all duration-500 rounded-[3rem] border-[12px] border-gray-900 shadow-2xl flex-shrink-0 bg-[#fafafa]";
-                
                 btnMobile.className = "px-4 py-1.5 rounded-full text-sm font-medium bg-white shadow-sm text-black transition-all flex items-center gap-2";
                 btnDesktop.className = "px-4 py-1.5 rounded-full text-sm font-medium text-gray-500 hover:text-black transition-all flex items-center gap-2";
             } else {
-                // Розтягуємо на весь екран (десктоп)
                 wrapper.className = "@container w-full h-full mx-auto relative transition-all duration-500 rounded-none border-0 shadow-none flex-shrink-0 bg-[#fafafa]";
-                
                 btnDesktop.className = "px-4 py-1.5 rounded-full text-sm font-medium bg-white shadow-sm text-black transition-all flex items-center gap-2";
                 btnMobile.className = "px-4 py-1.5 rounded-full text-sm font-medium text-gray-500 hover:text-black transition-all flex items-center gap-2";
             }
         }
 
-        // --- Логіка перемикання ролей ---
+        // --- Логіка перемикання ролей (Тепер 3 стани) ---
         function switchRole(role) {
             const viewAmbassador = document.getElementById('view-ambassador');
+            const viewAmbassadorDash = document.getElementById('view-ambassador-dashboard');
             const viewReferral = document.getElementById('view-referral');
+            
             const btnAmbassador = document.getElementById('btn-role-ambassador');
+            const btnAmbassadorDash = document.getElementById('btn-role-ambassador-dash');
             const btnReferral = document.getElementById('btn-role-referral');
+            
             const headerName = document.getElementById('header-user-name');
+
+            // Скидаємо всі класи кнопок на неактивні
+            const inactiveClass = "px-3 md:px-4 py-1.5 rounded-full text-[13px] md:text-sm font-medium text-gray-500 hover:text-black transition-all";
+            const activeClass = "px-3 md:px-4 py-1.5 rounded-full text-[13px] md:text-sm font-medium bg-white shadow-sm text-black transition-all";
+            
+            btnAmbassador.className = inactiveClass;
+            btnAmbassadorDash.className = inactiveClass;
+            btnReferral.className = inactiveClass;
+
+            // Ховаємо всі в'юшки
+            viewAmbassador.classList.add('hidden');
+            viewAmbassadorDash.classList.add('hidden');
+            viewReferral.classList.add('hidden');
 
             if (role === 'ambassador') {
                 viewAmbassador.classList.remove('hidden');
-                viewReferral.classList.add('hidden');
-                btnAmbassador.className = "px-4 py-1.5 rounded-full text-sm font-medium bg-white shadow-sm text-black transition-all";
-                btnReferral.className = "px-4 py-1.5 rounded-full text-sm font-medium text-gray-500 hover:text-black transition-all";
+                btnAmbassador.className = activeClass;
+                headerName.innerText = "Анастасія";
+            } else if (role === 'ambassador-dash') {
+                viewAmbassadorDash.classList.remove('hidden');
+                btnAmbassadorDash.className = activeClass;
                 headerName.innerText = "Анастасія";
             } else {
-                viewAmbassador.classList.add('hidden');
                 viewReferral.classList.remove('hidden');
-                btnReferral.className = "px-4 py-1.5 rounded-full text-sm font-medium bg-white shadow-sm text-black transition-all";
-                btnAmbassador.className = "px-4 py-1.5 rounded-full text-sm font-medium text-gray-500 hover:text-black transition-all";
+                btnReferral.className = activeClass;
                 headerName.innerText = "Максим";
             }
         }
@@ -463,23 +607,30 @@
             }, 3000);
         }
 
-        // --- Модалка ---
-        const modal = document.getElementById('modal-all-referrals');
-        const modalContent = document.getElementById('modal-content');
-
+        // --- Універсальна логіка Модалок ---
         function openModal() {
+            // Відкриття старої модалки для рефералів
+            const modal = document.getElementById('modal-all-referrals');
+            const content = document.getElementById('modal-content-referrals');
             modal.classList.remove('hidden');
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
-                modalContent.classList.replace('scale-95', 'scale-100');
+                content.classList.replace('scale-95', 'scale-100');
             }, 10);
         }
-        function closeModal() {
+
+        function closeModal(modalId, contentId) {
+            const modal = document.getElementById(modalId);
+            const content = document.getElementById(contentId);
             modal.classList.add('opacity-0');
-            modalContent.classList.replace('scale-100', 'scale-95');
+            content.classList.replace('scale-100', 'scale-95');
             setTimeout(() => { modal.classList.add('hidden'); }, 200);
         }
-        modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+
+        // Закриття по кліку на фон
+        document.getElementById('modal-all-referrals').addEventListener('click', function(e) { 
+            if (e.target === this) closeModal('modal-all-referrals', 'modal-content-referrals'); 
+        });
     </script>
 </body>
 </html>
